@@ -53,23 +53,6 @@ Request Body:
   ]
 }
 
-2. Update Recipe
-URL:  http://127.0.0.1:8000/api/recipes/{id}
-Method: PUT
-Description: Update an existing recipe's title, ingredients, or steps.
-Request Body:
-{
-  "title": "Updated Apple Quinoa Salad",
-  "ingredients": [
-    {"name": "Quinoa", "quantity": 1.5},
-    {"name": "Apple", "quantity": 0.6}
-  ],
-  "steps": [
-    {"step": "Cook quinoa 30."},
-    {"step": "Cook quinoa 35."}
-  ]
-}
-
 3. Get All Recipes
 URL:  http://127.0.0.1:8000/api/recipes
 Method: GET
