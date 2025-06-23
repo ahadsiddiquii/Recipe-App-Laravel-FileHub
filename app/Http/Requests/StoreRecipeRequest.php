@@ -2,6 +2,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\ValidationException;
 
 class StoreRecipeRequest extends FormRequest
 {
@@ -9,7 +13,7 @@ class StoreRecipeRequest extends FormRequest
 
     public function rules(): array
     {
-        return [
+         $rules = [
             'title' => 'required|string|max:255',
             'ingredients' => 'required|array|min:1',
             'ingredients.*.name' => 'required|string',
@@ -27,6 +31,20 @@ class StoreRecipeRequest extends FormRequest
             ];
         }
         return $rules;
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $errors = (new ValidationException($validator))->errors();
+
+        // Customize the error response format
+        throw new HttpResponseException(
+            response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $errors,
+            ], 422)
+        );
     }
 
     public function messages()

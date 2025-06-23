@@ -10,8 +10,8 @@ class NutritionController extends Controller
     public function seed(NutritionService $ns)
     {
         $ingredients = [
-            ['name' => 'quinoa', 'carbs' => 21, 'fat' => 2, 'protein' => 4],
-            ['name' => 'avocado', 'carbs' => 9,  'fat' => 15, 'protein' => 2],
+            ['name' => 'Spinach', 'carbs' => 1.1, 'fat' => 0.1, 'protein' => 0.9],
+            ['name' => 'Avocado', 'carbs' => 8.5,  'fat' => 14.7, 'protein' => 2],
         ];
 
         $results = [];
